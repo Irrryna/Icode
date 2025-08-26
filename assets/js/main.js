@@ -1,3 +1,4 @@
+// Theme toggle with persistence
 (function(){
   const root = document.body;
   const key = "theme-pref";
@@ -12,17 +13,7 @@
   toggleBtn && toggleBtn.addEventListener("click", toggle);
 })();
 
-(function(){
-  const el = document.getElementById("roleRotator");
-  if(!el) return;
-  const roles = ["Développeuse", "Test QA", "Linguiste", "Enseignante", "Geek 🧪"];
-  let i = 0;
-  setInterval(() => {
-    i = (i + 1) % roles.length;
-    el.textContent = roles[i];
-  }, 2200);
-})();
-
+// Easter egg modal
 (function(){
   const btn = document.getElementById("dontClick");
   const modalEl = document.getElementById("easterEggModal");
@@ -31,8 +22,9 @@
   btn.addEventListener("click", () => modal.show());
 })();
 
+// Current year
 document.getElementById("year").textContent = new Date().getFullYear();
 
-document.getElementById("cvLink").setAttribute("href", "#");
-document.getElementById("linkedinLink").setAttribute("href", "#");
-document.getElementById("footerLinkedIn").setAttribute("href", "#");
+// TODO: set your actual LinkedIn links (kept safe if element absent)
+(function(){var el=document.getElementById("linkedinLink"); if(el){el.setAttribute("href","#");}})();
+(function(){var el=document.getElementById("footerLinkedIn"); if(el){el.setAttribute("href","#");}})();

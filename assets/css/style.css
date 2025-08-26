@@ -4,8 +4,76 @@ body{ font-family: "Barlow Condensed", system-ui, -apple-system, Segoe UI, Robot
 .kicker{ font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; color: var(--brand); letter-spacing: .5px; }
 .code-accent{ font-family: "Fira Code", ui-monospace, monospace; background: color-mix(in oklab, var(--bs-primary), transparent 85%); padding: .125rem .375rem; border-radius: .375rem; }
 .section-title{ font-weight: 700; font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); margin-bottom: 1rem; }
-.hero-photo{ max-width: 360px; }
+
+/* Projects hover */
 .project-card{ transition: transform .2s ease, box-shadow .2s ease; }
 .project-card:hover{ transform: translateY(-4px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.08) !important; }
-.dont-click{ position: fixed; right: 1rem; bottom: 1rem; z-index: 1080; box-shadow: 0 .5rem 1rem rgba(0,0,0,.15); }
+
+/* Animated text (visible in light & dark) */
+.animated-text{
+  position: relative;
+  width: clamp(260px, 40vw, 520px);
+  height: 56px;
+  overflow: hidden;
+  line-height: 56px;
+  text-align: left;
+  font-family: "Fira Code", ui-monospace, monospace;
+  font-weight: 600;
+  color: var(--bs-body-color);
+}
+.animated-text span{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(100%);
+  animation: slideText 12s infinite;
+  padding: 0 .35rem;
+  border-radius: .4rem;
+  background: color-mix(in oklab, var(--bs-primary), transparent 90%);
+}
+.animated-text span:nth-child(1){ animation-delay: 0s; }
+.animated-text span:nth-child(2){ animation-delay: 2.4s; }
+.animated-text span:nth-child(3){ animation-delay: 4.8s; }
+.animated-text span:nth-child(4){ animation-delay: 7.2s; }
+.animated-text span:nth-child(5){ animation-delay: 9.6s; }
+
+@keyframes slideText{
+  0%, 20%{ transform: translateY(0); opacity: 1; }
+  25%, 100%{ transform: translateY(-100%); opacity: 0; }
+}
+
+/* Photo smaller, no oval */
+.hero-photo{
+  max-width: 280px;
+  border-radius: 12px;
+}
+@media (min-width: 992px){
+  .hero-photo{ max-width: 300px; }
+}
+
+/* CTA button (Don't Click) — gradient style */
+.cta-button{
+  position: fixed;
+  right: 10px;
+  bottom: 40px;
+  z-index: 1080;
+  background: linear-gradient(to bottom, #FFD700, #FFA500);
+  border: 2px solid #F4A460;
+  color: #fff;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,.25);
+  text-shadow: 1px 1px 2px rgba(0,0,0,.35);
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.cta-button:hover{ transform: scale(1.05); box-shadow: 0 10px 16px rgba(0,0,0,.3); }
+.cta-button:active{ transform: scale(.97); box-shadow: 0 4px 8px rgba(0,0,0,.2); }
+
+/* Smooth anchor */
 html{ scroll-behavior: smooth; }
